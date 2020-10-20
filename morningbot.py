@@ -39,7 +39,8 @@ bot = commands.Bot(
 # Setup the General cog with the help command
 generalCog = Utilities()
 bot.add_cog(generalCog)
-helpCommand.cog = generalCogit
+helpCommand.cog = generalCog
+
 
 places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 0
          ['Sveargruva', 'Useldange', 'Musadi'], ['Kitwe', 'Пиків Vinnytsia (Pykiv)', 'Pudasjärvi'],  # 1, 2
