@@ -32,17 +32,14 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 helpCommand = DefaultHelpCommand()
 
 bot = commands.Bot(
-    command_prefix="!",
+    command_prefix=".",
     help_command=helpCommand
 )
 
 # Setup the General cog with the help command
 generalCog = Utilities()
 bot.add_cog(generalCog)
-helpCommand.cog = generalCog
-
-# load other cogs
-bot.load_extension("cogs.queue")
+helpCommand.cog = generalCogit
 
 places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 0
          ['Sveargruva', 'Useldange', 'Musadi'], ['Kitwe', 'Пиків Vinnytsia (Pykiv)', 'Pudasjärvi'],  # 1, 2
