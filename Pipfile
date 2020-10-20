@@ -12,7 +12,6 @@ PyNaCl = "*"
 "discord.py" = "*"
 asyncio = "*"
 pytz = "*"
-random = "*"
 
 [requires]
 python_version = "3.7"
