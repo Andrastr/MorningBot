@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import pytz
 import random
-from array import *
 
 # logs data to the discord.log file, if this file doesn't exist at runtime it is created automatically
 from cogs.utilities import Utilities
