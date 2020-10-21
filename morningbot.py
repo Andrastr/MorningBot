@@ -49,13 +49,12 @@ places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 
          ['Khakassia', 'Christmas Island', 'Đà Lạt'], ['Buryatia', 'Changhua', 'Paraburdoo'],  # 7, 8
          ['Zabaykalsky Krai', '熊牛 (Kumaushi)', 'Choll'], ['Kanduka', 'Suicide Cliff', 'Carmila'],  # 9, 10
          ['Loloho', 'Ball Bay Reserve', 'Bopope'], ['Tofia', 'Millers Flat', 'Kanton Island'],  # 11, 12
-         ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit'], ['Fernando de Noronha', 'The South Sandwhich Islands', 'Ilha da Trindade'],  # -1, -2
-         ['Pichi Huinca', 'The Amazon Rainforest', 'Kangerlussuaq'], ['Zapallar', 'Nunatsuak', 'Pituffik'],  # -3, -4
-         ['La Havana', 'Sweeting Cay', 'Nippes'], ['Arkabutla Lake', 'Espíritu Santo', 'Saskatchewan'],  # -5, -6
-         ['Kugluktuk', 'Meeteetse', 'Jordan Valley'], ['Coeur d\'Alene', 'Catavina', 'Kamloops'],  # -7, -8
-         ['Knik-Fairview', 'Kwethluk', 'Pleasant Valley'], ['Îles du Désappointement', 'Te Ulu-o-Te-Watu', 'Kaua\'i' ],  # -9, -10
-         ['Niue', 'Swains Island', 'Fakofo'], ['Howland Island', 'Baker Island', 'The International Date Line']]  # -11, -12
-
+         ['Howland Island', 'Baker Island', 'The International Date Line'], ['Niue', 'Swains Island', 'Fakofo'],  # -12, -11
+         ['Îles du Désappointement', 'Te Ulu-o-Te-Watu', 'Kaua\'i'], ['Knik-Fairview', 'Kwethluk', 'Pleasant Valley'],  # -10, -9
+         ['Coeur d\'Alene', 'Catavina', 'Kamloops'], ['Kugluktuk', 'Meeteetse', 'Jordan Valley'],  # -8, -7
+         ['Arkabutla Lake', 'Espíritu Santo', 'Saskatchewan'], ['La Havana', 'Sweeting Cay', 'Nippes'],  # -6, -5
+         ['Zapallar', 'Nunatsuak', 'Pituffik'], ['Pichi Huinca', 'The Amazon Rainforest', 'Kangerlussuaq'],  # -4, -3
+         ['Fernando de Noronha', 'The South Sandwhich Islands', 'Ilha da Trindade'], ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit']]  # -2, -1
 
 
 
@@ -65,14 +64,14 @@ async def on_ready():
     Do something when the bot is ready to use.
     """
     print(f'{bot.user.name} has connected to Discord!')
-    london = pytz.timezone('UTC')
-    pacific = pytz.timezone('Pacific/Honolulu')
-    print(pacific.zone)
-    bla = datetime.now()
-    print(bla)
-    print(pacific)
+    # london = pytz.timezone('UTC')
+    # pacific = pytz.timezone('Pacific/Honolulu')
+    # print(pacific.zone)
+    # bla = datetime.now()
+    # print(bla)
+    # print(pacific)
 
-    print(pytz.country_names['nz'], pytz.country_timezones['nz'])
+    # print(pytz.country_names['nz'], pytz.country_timezones['nz'])
     # print(pytz.common_timezones)
 
     # await bot.loop.create_task(activity_loop())
@@ -100,13 +99,14 @@ async def morning_in():
     location = 'Ittoqqortoormiit'
     now = datetime.now()
     now = now.replace(minute=0, second=0, microsecond=0)
+    # now = now.replace(hour=11)
     morning = now.replace(hour=8)
-    print(now, morning)
+    print(now, ' | ', morning)
 
     if now < morning:
         while now != morning:
             now = now + timedelta(hours=1)
-            timezone += 0
+            timezone += 1
         print(timezone)
 
     elif now > morning:
@@ -114,10 +114,6 @@ async def morning_in():
             now = now - timedelta(hours=1)
             timezone -= 1
         print(timezone)
-        timezone = abs(timezone) + 12
-
-    if timezone > 24:
-        timezone = timezone - 24
 
     location = places[timezone][random_location]
 
@@ -132,7 +128,7 @@ async def on_message(message):
         location = await morning_in()
 
         ctx = await bot.get_context(message)
-        await ctx.send(message.author.mention + ' Good morning from ' + location)
+        await ctx.send(message.author.mention + ' *Good morning from ' + location)
 
     await bot.process_commands(message)
 
