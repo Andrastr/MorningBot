@@ -99,7 +99,7 @@ async def morning_in():
     location = 'Ittoqqortoormiit'
     now = datetime.now()
     now = now.replace(minute=0, second=0, microsecond=0)
-    # now = now.replace(hour=11)
+    now = now.replace(hour=22)
     morning = now.replace(hour=8)
     print(now, ' | ', morning)
 
@@ -128,7 +128,7 @@ async def on_message(message):
         location = await morning_in()
 
         ctx = await bot.get_context(message)
-        await ctx.send(message.author.mention + ' *Good morning from ' + location)
+        await ctx.send(message.author.mention + ' Good morning from ' + location)
 
     await bot.process_commands(message)
 
