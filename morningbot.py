@@ -121,7 +121,7 @@ async def morning_in():
 
 @bot.event
 async def on_message(message):
-    if message.author.id != 767758780208906241 \
+    if !message.author.bot \
             and message.author.id != 766690857788768289 \
             and message.content.lower().__contains__("morn"):
 
