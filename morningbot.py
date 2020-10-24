@@ -48,7 +48,7 @@ places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 
          ['Mawson Station', 'Gan', 'Margilan'], ['Omsk Oblast', 'Rangpur', 'Oskemen'],  # 5, 6
          ['Khakassia', 'Christmas Island', 'Đà Lạt'], ['Buryatia', 'Changhua', 'Paraburdoo'],  # 7, 8
          ['Zabaykalsky Krai', '熊牛 (Kumaushi)', 'Choll'], ['Kanduka', 'Suicide Cliff', 'Carmila'],  # 9, 10
-         ['Loloho', 'Ball Bay Reserve', 'Bopope'], ['Tofia', 'Millers Flat', 'Kanton Island'],  # 11, 12
+         ['Loloho', 'Ball Bay Reserve', 'Bopepe'], ['Tofia', 'Millers Flat', 'Kanton Island'],  # 11, 12
          ['Howland Island', 'Baker Island', 'The International Date Line'], ['Niue', 'Swains Island', 'Fakofo'],  # -12, -11
          ['Îles du Désappointement', 'Te Ulu-o-Te-Watu', 'Kaua\'i'], ['Knik-Fairview', 'Kwethluk', 'Pleasant Valley'],  # -10, -9
          ['Coeur d\'Alene', 'Catavina', 'Kamloops'], ['Kugluktuk', 'Meeteetse', 'Jordan Valley'],  # -8, -7
