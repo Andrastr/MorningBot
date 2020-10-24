@@ -99,7 +99,7 @@ async def morning_in():
     location = 'Ittoqqortoormiit'
     now = datetime.now()
     now = now.replace(minute=0, second=0, microsecond=0)
-    now = now.replace(hour=22)
+    # now = now.replace(hour=22)
     morning = now.replace(hour=8)
     print(now, ' | ', morning)
 
