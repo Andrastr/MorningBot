@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import pytz
 import random
+import json
 
 # logs data to the discord.log file, if this file doesn't exist at runtime it is created automatically
 from cogs.utilities import Utilities
@@ -96,7 +97,6 @@ async def activity_loop():
 async def morning_in():
     timezone = 0
     random_location = random.randint(0, 2)
-    location = 'Ittoqqortoormiit'
     now = datetime.now()
     now = now.replace(minute=0, second=0, microsecond=0)
     # now = now.replace(hour=22)
@@ -121,9 +121,7 @@ async def morning_in():
 
 @bot.event
 async def on_message(message):
-    if message.author.id != 767758780208906241 \
-            and message.author.id != 766690857788768289 \
-            and message.content.lower().__contains__("morn"):
+    if not message.author.bot and message.content.lower().__contains__("morn"):
 
         location = await morning_in()
 
