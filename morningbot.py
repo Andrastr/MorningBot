@@ -56,6 +56,9 @@ places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 
          ['Zapallar', 'Nunatsuak', 'Pituffik'], ['Pichi Huinca', 'The Amazon Rainforest', 'Kangerlussuaq'],  # -4, -3
          ['Fernando de Noronha', 'The South Sandwich Islands', 'Ilha da Trindade'], ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit']]  # -2, -1
 
+# with open('locations.txt', 'w') as json_file:
+    # json.dump(places, json_file)
+
 
 
 @bot.event
@@ -100,7 +103,7 @@ async def morning_in():
     now = datetime.now()
 
     # below is used for debugging
-    # now = now.replace(hour=22)
+    # now = now.replace(hour=8)
 
     morning = now.replace(hour=random_morning)
     print(now, ' | ', morning)
@@ -115,6 +118,9 @@ async def morning_in():
         while now != morning:
             now = now - timedelta(hours=1)
             timezone -= 1
+        print(timezone)
+
+    elif now == morning:
         print(timezone)
 
     location = places[timezone][random_location]
