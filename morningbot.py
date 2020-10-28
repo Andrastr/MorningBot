@@ -54,7 +54,7 @@ places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 
          ['Coeur d\'Alene', 'Catavina', 'Kamloops'], ['Kugluktuk', 'Meeteetse', 'Jordan Valley'],  # -8, -7
          ['Arkabutla Lake', 'Espíritu Santo', 'Saskatchewan'], ['La Havana', 'Sweeting Cay', 'Nippes'],  # -6, -5
          ['Zapallar', 'Nunatsuak', 'Pituffik'], ['Pichi Huinca', 'The Amazon Rainforest', 'Kangerlussuaq'],  # -4, -3
-         ['Fernando de Noronha', 'The South Sandwhich Islands', 'Ilha da Trindade'], ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit']]  # -2, -1
+         ['Fernando de Noronha', 'The South Sandwich Islands', 'Ilha da Trindade'], ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit']]  # -2, -1
 
 
 
