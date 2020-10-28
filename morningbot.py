@@ -10,7 +10,6 @@ from discord.ext import commands
 from discord.ext.commands import DefaultHelpCommand
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
-import pytz
 import random
 import json
 
@@ -97,10 +96,13 @@ async def activity_loop():
 async def morning_in():
     timezone = 0
     random_location = random.randint(0, 2)
+    random_morning = 7 + random.randint(0, 2)
     now = datetime.now()
-    now = now.replace(minute=0, second=0, microsecond=0)
+
+    # below is used for debugging
     # now = now.replace(hour=22)
-    morning = now.replace(hour=8)
+
+    morning = now.replace(hour=random_morning)
     print(now, ' | ', morning)
 
     if now < morning:
