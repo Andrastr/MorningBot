@@ -4,7 +4,7 @@ Here at Joel Adams & Co. engineering we pride ourselves in creating revolutionar
 inventions such as this discord bot. Why are you still reading this? Go add it 
 already!
 
-## Testing install instructions`
+## Testing install instructions
 
 Run `pipenv install` into the terminal
 
