@@ -17,7 +17,7 @@ Create .env file like bellow:
 DISCORD_TOKEN=YOUR_TOKEN_HERE
 ```
 
-Replacing YOUR_TOKEN_HERE with the token for your bot, see <https://discordpy.readthedocs.io/en/latest/discord.html> for how to do that.
+Replacing YOUR_TOKEN_HERE with the token for your bot, see <https://discordpy.readthedocs.io/en/latest/discord.html> for how to get that.
 
 Run in console via running `python morningbot.py`
 
