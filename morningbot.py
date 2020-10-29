@@ -1,5 +1,3 @@
-# https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-
 import asyncio
 import os
 
@@ -8,11 +6,13 @@ import logging
 import discord
 from discord.ext import commands
 from discord.ext.commands import DefaultHelpCommand
-from dotenv import load_dotenv
-from datetime import datetime, timedelta
-import random
-import json
 
+from dotenv import load_dotenv
+from datetime import datetime, timedelta,date
+import pytz
+import random
+import utils
+import json
 # logs data to the discord.log file, if this file doesn't exist at runtime it is created automatically
 from cogs.utilities import Utilities
 
@@ -41,43 +41,12 @@ generalCog = Utilities()
 bot.add_cog(generalCog)
 helpCommand.cog = generalCog
 
-
-places = [['Cockermouth', 'Höfn í Hornafirði', '(تجكجة (Tidjikja)'],  # 0
-         ['Sveargruva', 'Useldange', 'Musadi'], ['Kitwe', 'Пиків Vinnytsia (Pykiv)', 'Pudasjärvi'],  # 1, 2
-         ['ጫንጮ (Debre Selam)', 'قيصومة فيحان', 'Ooo "Kara-Tau"'], ['Volgrograd Oblast', 'Crozet Islands', 'Shushi'],  # 3, 4
-         ['Mawson Station', 'Gan', 'Margilan'], ['Omsk Oblast', 'Rangpur', 'Oskemen'],  # 5, 6
-         ['Khakassia', 'Christmas Island', 'Đà Lạt'], ['Buryatia', 'Changhua', 'Paraburdoo'],  # 7, 8
-         ['Zabaykalsky Krai', '熊牛 (Kumaushi)', 'Choll'], ['Kanduka', 'Suicide Cliff', 'Carmila'],  # 9, 10
-         ['Loloho', 'Ball Bay Reserve', 'Bopope'], ['Tofia', 'Millers Flat', 'Kanton Island'],  # 11, 12
-         ['Howland Island', 'Baker Island', 'The International Date Line'], ['Niue', 'Swains Island', 'Fakofo'],  # -12, -11
-         ['Îles du Désappointement', 'Te Ulu-o-Te-Watu', 'Kaua\'i'], ['Knik-Fairview', 'Kwethluk', 'Pleasant Valley'],  # -10, -9
-         ['Coeur d\'Alene', 'Catavina', 'Kamloops'], ['Kugluktuk', 'Meeteetse', 'Jordan Valley'],  # -8, -7
-         ['Arkabutla Lake', 'Espíritu Santo', 'Saskatchewan'], ['La Havana', 'Sweeting Cay', 'Nippes'],  # -6, -5
-         ['Zapallar', 'Nunatsuak', 'Pituffik'], ['Pichi Huinca', 'The Amazon Rainforest', 'Kangerlussuaq'],  # -4, -3
-         ['Fernando de Noronha', 'The South Sandwich Islands', 'Ilha da Trindade'], ['Santa Antão', 'Boa Vista', 'Ittoqqortoormiit']]  # -2, -1
-
-# with open('locations.txt', 'w') as json_file:
-    # json.dump(places, json_file)
-
-
-
 @bot.event
 async def on_ready():
     """
     Do something when the bot is ready to use.
     """
     print(f'{bot.user.name} has connected to Discord!')
-    # london = pytz.timezone('UTC')
-    # pacific = pytz.timezone('Pacific/Honolulu')
-    # print(pacific.zone)
-    # bla = datetime.now()
-    # print(bla)
-    # print(pacific)
-
-    # print(pytz.country_names['nz'], pytz.country_timezones['nz'])
-    # print(pytz.common_timezones)
-
-    # await bot.loop.create_task(activity_loop())
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the sunrise"))
 
 
@@ -97,35 +66,25 @@ async def activity_loop():
 
 
 async def morning_in():
-    timezone = 0
+    """
+    Prints a random location of a list where it is currently 8am in their timezone 
+    """
     random_location = random.randint(0, 2)
+
     random_morning = 7 + random.randint(0, 2)
+
     now = datetime.now()
-
-    # below is used for debugging
-    # now = now.replace(hour=8)
-
+    now = now.replace(minute=0, second=0, microsecond=0)
     morning = now.replace(hour=random_morning)
+
     print(now, ' | ', morning)
-
-    if now < morning:
-        while now != morning:
-            now = now + timedelta(hours=1)
-            timezone += 1
-        print(timezone)
-
-    elif now > morning:
-        while now != morning:
-            now = now - timedelta(hours=1)
-            timezone -= 1
-        print(timezone)
-
-    elif now == morning:
-        print(timezone)
-
-    location = places[timezone][random_location]
+    
+    timezone = utils.calculate_timezone(now,morning)
+    
+    location = utils.get_location(timezone,random_location)
 
     return location
+
 
 @bot.event
 async def on_message(message):
@@ -141,7 +100,8 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    """
+    """<<<<<<< HEAD
+
     Handle the Error message in a nice way.
     """
     if isinstance(error, commands.errors.CheckFailure):
