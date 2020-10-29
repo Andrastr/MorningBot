@@ -45,14 +45,16 @@ def calculate_timezone(now,target):
         while now != target:
             now = now + timedelta(hours=1)
             timezone += 1
-        print(timezone)
     elif now > target:
         while now != target:
             now = now - timedelta(hours=1)
             timezone -= 1
-        print(timezone)
     elif now == target:
         timezone = 0
+
+    if timezone < 0:
+        timezone = 25 + timezone
+    print(timezone)
 
     return timezone
 
