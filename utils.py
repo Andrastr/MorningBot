@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta,date
+from datetime import timedelta
 import json
 
 def read_json_file(filename):
@@ -12,7 +12,6 @@ def read_json_file(filename):
         list timezones and nested list of location strings
     """
     data = []
-
     with open(filename, "r", encoding='UTF-8') as read_file:
         data = json.load(read_file)
         return data
