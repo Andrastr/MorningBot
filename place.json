@@ -1,0 +1,211 @@
+[
+  {
+    "timezone": 0,
+    "location": [
+      "Cockermouth",
+      "Höfn í Hornafirði",
+      "(تجكجة (Tidjikja)"
+    ]
+  },
+  {
+    "timezone": 1,
+    "location": [
+      "Sveargruva",
+      "Useldange",
+      "Musadi"
+    ]
+  },
+  {
+    "timezone": 2,
+    "location": [
+      "Kitwe",
+      "Пиків Vinnytsia (Pykiv)",
+      "Pudasjärvi"
+    ]
+  },
+  {
+    "timezone": 3,
+    "location": [
+      "ጫንጮ (Debre Selam)",
+      "قيصومة فيحان",
+      "Ooo 'Kara-Tau'"
+    ]
+  },
+  {
+    "timezone": 4,
+    "location": [
+      "Volgrograd Oblast",
+      "Crozet Islands",
+      "Shushi"
+    ]
+  },
+  {
+    "timezone": 5,
+    "location": [
+      "Mawson Station",
+      "Gan",
+      "Margilan"
+    ]
+  },
+  {
+    "timezone": 6,
+    "location": [
+      "Omsk Oblast",
+      "Rangpur",
+      "Oskemen"
+    ]
+  },
+  {
+    "timezone": 7,
+    "location": [
+      "Khakassia",
+      "Christmas Island",
+      "Đà Lạt"
+    ]
+  },
+  {
+    "timezone": 8,
+    "location": [
+      "Buryatia",
+      "Changhua",
+      "Paraburdoo"
+    ]
+  },
+  {
+    "timezone": 9,
+    "location": [
+      "Zabaykalsky Krai",
+      "熊牛 (Kumaushi)",
+      "Choll"
+    ]
+  },
+  {
+    "timezone": 10,
+    "location": [
+      "Kanduka",
+      "Suicide Cliff",
+      "Carmila"
+    ]
+  },
+  {
+    "timezone": 11,
+    "location": [
+      "Loloho",
+      "Ball Bay Reserve",
+      "Bopope"
+    ]
+  },
+  {
+    "timezone": 12,
+    "location": [
+      "Tofia",
+      "Millers Flat",
+      "Kanton Island"
+    ]
+  },
+  {
+    "timezone": 0,
+    "location": [
+      "Cockermouth",
+      "Höfn í Hornafirði",
+      "(تجكجة (Tidjikja)"
+    ]
+  },
+  {
+    "timezone": -1,
+    "location": [
+      "Santa Antão",
+      "Boa Vista",
+      "Ittoqqortoormiit"
+    ]
+  },
+  {
+    "timezone": -2,
+    "location": [
+      "Fernando de Noronha",
+      "The South Sandwich Islands",
+      "Ilha da Trindade"
+    ]
+  },
+  {
+    "timezone": -3,
+    "location": [
+      "Pichi Huinca",
+      "The Amazon Rainforest",
+      "Kangerlussuaq"
+    ]
+  },
+  {
+    "timezone": -4,
+    "location": [
+      "Zapallar",
+      "Nunatsuak",
+      "Pituffik"
+    ]
+  },
+  {
+    "timezone": -5,
+    "location": [
+        "Coeur d\"Alene",
+      "La Havana",
+      "Sweeting Cay",
+      "Nippes"
+    ]
+  },
+  {
+    "timezone": -6,
+    "location": [
+      "Arkabutla Lake",
+      "Espíritu Santo",
+      "Saskatchewan"
+    ]
+  },
+  {
+    "timezone": -7,
+    "location": [
+      "Kugluktuk",
+      "Meeteetse",
+      "Jordan Valley"
+    ]
+  },
+  {
+    "timezone": -8,
+    "location": [
+      "Coeur d\"Alene",
+      "Catavina",
+      "Kamloops"
+    ]
+  },
+  {
+    "timezone": -9,
+    "location": [
+      "Knik-Fairview",
+      "Kwethluk",
+      "Pleasant Valley"
+    ]
+  },
+  {
+    "timezone": -10,
+    "location": [
+      "Îles du Désappointement",
+      "Te Ulu-o-Te-Watu",
+      "Kaua'i"
+    ]
+  },
+  {
+    "timezone": -11,
+    "location": [
+      "Niue",
+      "Swains Island",
+      "Fakofo"
+    ]
+  },
+  {
+    "timezone": -12,
+    "location": [
+      "Howland Island",
+      "Baker Island",
+      "The International Date Line"
+    ]
+  }
+]
