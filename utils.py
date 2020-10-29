@@ -52,8 +52,10 @@ def calculate_timezone(now,target):
     elif now == target:
         timezone = 0
 
-    if timezone < 0:
-        timezone = 25 + timezone
+    if timezone < -12:
+        timezone = timezone + 25
+    if timezone > 12:
+        timezone = timezone - 25
     print(timezone)
 
     return timezone
