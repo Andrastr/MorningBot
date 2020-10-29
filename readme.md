@@ -29,4 +29,4 @@ To test see <https://discordpy.readthedocs.io/en/latest/discord.html> on how to 
 
 ## Running Unit tests
 
-To run the unit test run python testMorningbot.py with Pipenv shell
+To run the unit test run `python testMorningbot.py` in Pipenv shell
