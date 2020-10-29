@@ -100,7 +100,7 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    """<<<<<<< HEAD
+    """
 
     Handle the Error message in a nice way.
     """
