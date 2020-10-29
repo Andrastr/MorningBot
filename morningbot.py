@@ -6,19 +6,13 @@ import logging
 import discord
 from discord.ext import commands
 from discord.ext.commands import DefaultHelpCommand
-from dotenv import load_dotenv
-<<<<<<< HEAD
-from datetime import datetime, timedelta
-import random
-import json
 
-=======
+from dotenv import load_dotenv
 from datetime import datetime, timedelta,date
 import pytz
 import random
 import utils
 import json
->>>>>>> 1fa88c9... Added Json support as well as basic unit tests
 # logs data to the discord.log file, if this file doesn't exist at runtime it is created automatically
 from cogs.utilities import Utilities
 
@@ -106,7 +100,8 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    """
+    """<<<<<<< HEAD
+
     Handle the Error message in a nice way.
     """
     if isinstance(error, commands.errors.CheckFailure):
