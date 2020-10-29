@@ -12,9 +12,10 @@ def read_json_file(filename):
         list timezones and nested list of location strings
     """
     data = []
-    with open(filename, "r") as read_file:
+
+    with open(filename, "r", encoding='UTF-8') as read_file:
         data = json.load(read_file)
-    return data
+        return data
 
 places = read_json_file("place.json")
 
@@ -38,7 +39,9 @@ def calculate_timezone(now,target):
     Returns:
         int: timezone for target time
     """
+
     timezone = 0
+
     if now < target:
         while now != target:
             now = now + timedelta(hours=1)
@@ -49,6 +52,9 @@ def calculate_timezone(now,target):
             now = now - timedelta(hours=1)
             timezone -= 1
         print(timezone)
+    elif now == target:
+        timezone = 0
+
     return timezone
 
 def get_location(timezone,index):
