@@ -40,7 +40,7 @@ bot.add_cog(generalCog)
 helpCommand.cog = generalCog
 
 # Define list of morning response triggering substrings
-morningTriggers = ["morn", "bore da", "bon matin", "buenos dias", "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
+morningTriggers = ["morn", "bore da", "bon matin", "buenos dias", "Buongiorno", "Bonjour", "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
 
 @bot.event
 async def on_ready():
