@@ -26,7 +26,6 @@ logger.addHandler(handler)
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-
 # Initialise the Bot object with an accessible help Command object
 helpCommand = DefaultHelpCommand()
 
@@ -39,6 +38,9 @@ bot = commands.Bot(
 generalCog = Utilities()
 bot.add_cog(generalCog)
 helpCommand.cog = generalCog
+
+# Define list of morning response triggering substrings
+morningTriggers = ["morn", "bore da", "bon matin", "buenos dias", "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
 
 @bot.event
 async def on_ready():
@@ -66,7 +68,7 @@ async def activity_loop():
 
 async def morning_in():
     """
-    Prints a random location of a list where it is currently 8am in their timezone 
+    Prints a random location of a list where it is currently 8am in their timezone
     """
     random_location = random.randint(0, 2)
 
@@ -77,9 +79,9 @@ async def morning_in():
     morning = now.replace(hour=random_morning)
 
     print(now, ' | ', morning)
-    
+
     timezone = utils.calculate_timezone(now,morning)
-    
+
     location = utils.get_location(timezone,random_location)
 
     return location
@@ -87,7 +89,7 @@ async def morning_in():
 
 @bot.event
 async def on_message(message):
-    if not message.author.bot and message.content.lower().__contains__("morn"):
+    if not message.author.bot and any(map(message.content.lower().__contains__, morningTriggers)):
 
         location = await morning_in()
 
