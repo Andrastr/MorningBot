@@ -43,6 +43,7 @@ helpCommand.cog = generalCog
 morningTriggers = ["morn", "bore da", "bon matin", "buenos dias", "buongiorno", "bonjour", "god morgen", "góðan daginn",
                    "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
 
+
 @bot.event
 async def on_ready():
     """
@@ -75,15 +76,16 @@ async def morning_in():
 
     random_morning = 7 + random.randint(0, 2)
 
+    # Gets the current time and sets minutes, seconds and microseconds to 0
     now = datetime.now()
     now = now.replace(minute=0, second=0, microsecond=0)
     morning = now.replace(hour=random_morning)
 
     print(now, ' | ', morning)
 
-    timezone = utils.calculate_timezone(now,morning)
+    timezone = utils.calculate_timezone(now, morning)
 
-    location = utils.get_location(timezone,random_location)
+    location = utils.get_location(timezone, random_location)
 
     return location
 
@@ -102,8 +104,7 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    """<<<<<<< HEAD
-
+    """
     Handle the Error message in a nice way.
     """
     if isinstance(error, commands.errors.CheckFailure):

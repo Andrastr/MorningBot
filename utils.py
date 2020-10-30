@@ -1,6 +1,7 @@
 from datetime import timedelta
 import json
 
+
 def read_json_file(filename):
     """
     Reads Json file
@@ -11,12 +12,13 @@ def read_json_file(filename):
     Returns:
         list timezones and nested list of location strings
     """
-    data = []
     with open(filename, "r", encoding='UTF-8') as read_file:
         data = json.load(read_file)
         return data
 
+
 places = read_json_file("place.json")
+
 
 def get_places():
     """
@@ -27,7 +29,8 @@ def get_places():
     """
     return places
 
-def calculate_timezone(now,target):
+
+def calculate_timezone(now, target):
     """
     Calculates the calculates the timezone offset between the current time and the target time
      
@@ -60,13 +63,14 @@ def calculate_timezone(now,target):
 
     return timezone
 
-def get_location(timezone,index):
+
+def get_location(timezone, index):
     """
-    Gets the location string for the timeszone
+    Gets the location string for the timezone
 
     Parameters:
         timezone (int) : timezone for string
-        item (int) : index location item to select
+        index (int) : index location item to select
 
     Returns:
         int: timezone offset between inputs
