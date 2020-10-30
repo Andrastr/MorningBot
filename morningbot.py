@@ -43,6 +43,10 @@ helpCommand.cog = generalCog
 morningTriggers = ["morn", "bore da", "bon matin", "buenos dias", "buongiorno", "bonjour", "god morgen", "góðan daginn",
                    "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
 
+morningFrom = ["Good morning from", "Bore da o", "Bonjour de", "Buenos dias desde", "Boungiorno da", "Bonjour de",
+               "God morgen fra", "Góðan daginn frá kl", "Guten morgen ab", "Bom dia de", "Sabah alkhayr min",
+               "Bonan matenon de", "Sawubona kusuka", "Subax wanaagsan"]
+
 
 @bot.event
 async def on_ready():
@@ -95,9 +99,10 @@ async def on_message(message):
     if not message.author.bot and any(map(message.content.lower().__contains__, morningTriggers)):
 
         location = await morning_in()
+        index = utils.get_language_return_type(message, morningTriggers)
 
         ctx = await bot.get_context(message)
-        await ctx.send(message.author.mention + ' Good morning from ' + location)
+        await ctx.send(message.author.mention + " " + morningFrom[index] + " " + location)
 
     await bot.process_commands(message)
 

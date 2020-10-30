@@ -78,3 +78,16 @@ def get_location(timezone, index):
     for place in places:
         if place["timezone"] == timezone:
             return place["location"][index]
+
+
+def get_language_return_type(message, morningTriggers):
+    """
+    Retrieves the language to respond to the message
+    Returns:
+        int: index of the response message
+    """
+    index = 0
+    for inputLanguage in morningTriggers:
+        if message.content.lower().__contains__(inputLanguage):
+            return index
+        index += 1
