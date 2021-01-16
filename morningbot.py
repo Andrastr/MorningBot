@@ -96,7 +96,7 @@ async def morning_in():
 
 @bot.event
 async def on_message(message):
-    if not message.author.bot and (any(map(message.content.lower().__contains__, morningTriggers)) or message.content.lower().__contains__("gninrom"):
+    if not message.author.bot and (any(map(message.content.lower().__contains__, morningTriggers)) or message.content.lower().__contains__("gninrom")):
 
         location = await morning_in()
         index = utils.get_language_return_type(message, morningTriggers)
