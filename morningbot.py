@@ -102,8 +102,10 @@ async def on_message(message):
         index = utils.get_language_return_type(message, morningTriggers)
 
         ctx = await bot.get_context(message)
+
+        # Checks if morning is backwards so returns backwards version of message
         if index == 1:
-            await ctx.send(location + " " + morningFrom[index] + " " + message.author.mention)
+            await ctx.send(location[::-1] + " " + morningFrom[index] + " " + message.author.mention)
         else:
             await ctx.send(message.author.mention + " " + morningFrom[index] + " " + location)
 
