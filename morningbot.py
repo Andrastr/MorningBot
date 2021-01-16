@@ -102,7 +102,10 @@ async def on_message(message):
         index = utils.get_language_return_type(message, morningTriggers)
 
         ctx = await bot.get_context(message)
-        await ctx.send(message.author.mention + " " + morningFrom[index] + " " + location)
+        if index == 1:
+            await ctx.send(location + " " + morningFrom[index] + " " + message.author.mention)
+        else:
+            await ctx.send(message.author.mention + " " + morningFrom[index] + " " + location)
 
     await bot.process_commands(message)
 
