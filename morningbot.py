@@ -40,7 +40,7 @@ bot.add_cog(generalCog)
 helpCommand.cog = generalCog
 
 # Define list of morning response triggering substrings
-morningTriggers = ["morn", "gninrom", "bore da", "bon matin", "buenos dias", "buongiorno", "bonjour", "god morgen", "góðan daginn",
+morningTriggers = ["morn", "gninrom", "bore", "bon matin", "buenos dias", "buongiorno", "bonjour", "god morgen", "góðan daginn",
                    "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo"]
 
 morningFrom = ["Good morning from", "morf gninrom dooG", "Bore da o", "Bonjour de", "Buenos dias desde", "Boungiorno da", "Bonjour de",
