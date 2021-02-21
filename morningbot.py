@@ -55,7 +55,7 @@ morningTriggers = {
         "moghrey mie": "Moghrey mie voish",
         # Germanic
         "guten morgen": "Guten morgen ab",
-        "góðan daginn": "Góðan daginn frá kl",
+        "góðan daginn": "Góðan daginn frá",
         "god morgen": "God morgen fra",
         "god morgon": "God morgon frå",
         # Latin
