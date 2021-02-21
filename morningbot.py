@@ -40,14 +40,37 @@ bot.add_cog(generalCog)
 helpCommand.cog = generalCog
 
 # Define list of morning response triggering substrings
-morningTriggers = ["morn", "gninrom", "bore", "bon matin", "buenos dias", "buongiorno", "bonjour", "god morgen", "góðan daginn",
-                   "guten morgen", "bom dia", "sabah al-khair", "bonan matenon", "sawubona", "ahayo", "god morgon", "madainn mhath", "maidin mhaith"
-                   "moghrey mie" ]
-
-morningFrom = ["Good morning from", "morf gninrom dooG", "Bore da o", "Bonjour de", "Buenos dias desde", "Boungiorno da", "Bonjour de",
-               "God morgen fra", "Góðan daginn frá kl", "Guten morgen ab", "Bom dia de", "Sabah alkhayr min",
-               "Bonan matenon de", "Sawubona kusuka", "Subax wanaagsan", "God morgon frå", "Madainn mhath bho", "Maidin mhaith ó",
-               "Moghrey mie voish"]
+morningTriggers = {
+        "morn": "Good morning from",
+        "gninrom": "morf gninrom dooG", 
+        # Brythonic
+        "bore": "Bore da o",
+        "myttin": "Myttin da diworth",
+        "demat": "Mintinvezh mat eus",
+        "mintin": "Mintinvezh mat eus",
+        "beure": "Beurevezh mat eus",
+        # Gaelic / Goidelic
+        "madainn mhath": "Madainn mhath bho", 
+        "maidin mhaith": "Maidin mhaith ó",
+        "moghrey mie": "Moghrey mie voish",
+        # Germanic
+        "guten morgen": "Guten morgen ab",
+        "góðan daginn": "Góðan daginn frá kl",
+        "god morgen": "God morgen fra",
+        "god morgon": "God morgon frå",
+        # Latin
+        "bon matin": "Bonjour de",
+        "bonjour": "Bonjour de",
+        "buenos dias": "Buenos dias desde",
+        "buongiorno": "Boungiorno da",
+        "bom dia": "Bom dia de",
+        # Arabic
+        "sabah al-khair": "Sabah alkhayr min",
+        # Other
+        "bonan matenon": "Bonan matenon de",
+        "sawubona": "Sawubona kusuka",
+        "ahayo": "Subax wanaagsan"
+}
 
 
 @bot.event
@@ -101,15 +124,15 @@ async def on_message(message):
     if not message.author.bot and any(map(message.content.lower().__contains__, morningTriggers)):
 
         location = await morning_in()
-        index = utils.get_language_return_type(message, morningTriggers)
+        trigger = utils.get_language_return_type(message, morningTriggers)
 
         ctx = await bot.get_context(message)
 
         # Checks if morning is backwards so returns backwards version of message
-        if index == 1:
-            await ctx.send(location[::-1] + " " + morningFrom[index] + " " + message.author.mention)
+        if trigger == "gninrom":
+            await ctx.send(location[::-1] + " " + morningTriggers[trigger] + " " + message.author.mention)
         else:
-            await ctx.send(message.author.mention + " " + morningFrom[index] + " " + location)
+            await ctx.send(message.author.mention + " " + morningTriggers[trigger] + " " + location)
 
     await bot.process_commands(message)
 
