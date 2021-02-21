@@ -88,6 +88,6 @@ def get_language_return_type(message, morningTriggers):
     """
     index = 0
     for trigger in morningTriggers:
-        if message.content.lower().__contains__(triggger):
+        if message.content.lower().__contains__(trigger):
             return trigger
         index += 1
