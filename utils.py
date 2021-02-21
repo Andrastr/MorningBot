@@ -84,10 +84,10 @@ def get_language_return_type(message, morningTriggers):
     """
     Retrieves the language to respond to the message
     Returns:
-        int: index of the response message
+        string: trigger
     """
     index = 0
-    for inputLanguage in morningTriggers:
-        if message.content.lower().__contains__(inputLanguage):
-            return index
+    for trigger in morningTriggers:
+        if message.content.lower().__contains__(triggger):
+            return trigger
         index += 1
