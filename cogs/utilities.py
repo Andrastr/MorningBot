@@ -24,7 +24,8 @@ class Utilities(commands.Cog):
         Print a link to the source code
         """
         await ctx.send(content='Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`\n'
-                               'Thanks to the contributors, `Philip`, `Matt`, and `Michael`\n'
+                               'Thanks to the contributors:\n' 
+                               '`Philip`, `Matt`, `Michael`, `Prv`\n'
                                'https://github.com/Andrastr/MorningBot')
 
     @commands.command()
