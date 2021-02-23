@@ -17,7 +17,7 @@ class TriggerStatus(enum.Enum):
 
 # Define list of morning response triggering substrings
 morningTriggers = {
-    "morning": "{user} Good morning from {place}",
+    "morn": "{user} Good morning from {place}",
     # Brythonic
     "bore": "{user} Bore da o {place}",
     "myttin": "{user} Myttin da diworth {place}",
