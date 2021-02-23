@@ -8,6 +8,10 @@ import json
 import random
 
 class TriggerStatus(enum.Enum):
+    """
+    Represents status of a trigger, i.e. a morning greet.
+    Can be either regular success or a reverse greet.
+    """
     REGULAR = 0
     REVERSE = 1
 
