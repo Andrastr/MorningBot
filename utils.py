@@ -1,4 +1,8 @@
-from datetime import datetime, timedelta
+"""
+Module for core functionality of morningbot
+"""
+from datetime import timedelta
+from datetime import datetime
 import json
 import random
 
@@ -34,13 +38,14 @@ morningTriggers = {
     "ahayo": "{user} Subax wanaagsan {place}"
 }
 
+
 def read_json_file(filename):
     """
     Reads Json file
 
     Parameters:
         filename (string) : filename of json file to be read
-    
+
     Returns:
         list timezones and nested list of location strings
     """
@@ -55,7 +60,7 @@ places = read_json_file("place.json")
 def get_places():
     """
     Gets the places list
-    
+
     Returns:
         list timezones and nested list of location strings
     """
@@ -65,7 +70,7 @@ def get_places():
 def calculate_timezone(now, target):
     """
     Calculates the calculates the timezone offset between the current time and the target time
-     
+
     Parameters:
         now (timedate) : the current datetime
         target (timedate) : target datetime
@@ -110,8 +115,10 @@ def get_location(timezone, index):
     for place in places:
         if place["timezone"] == timezone:
             return place["location"][index]
+    return None
 
-async def morning_in():
+
+def morning_in():
     """
     Prints a random location of a list where it is currently 8am in their timezone
     """
@@ -132,7 +139,8 @@ async def morning_in():
 
     return location
 
-async def get_language_return_type(message):
+
+def get_language_return_type(message):
     """
     Retrieves the language to respond to the message
     Returns:
@@ -145,7 +153,7 @@ async def get_language_return_type(message):
             return (1, trigger)
     return None
 
-async def get_response(message, trigger_values, location):
+def get_response(message, trigger_values, location):
     """
     Generates an appropriate response to the message
     Returns:
@@ -165,17 +173,17 @@ async def get_response(message, trigger_values, location):
                 )
     return None
 
-async def get_morning_response(message):
+def get_morning_response(message):
     """
     Generates an appropriate response to the message
     Returns:
         string: response
     """
     if not message.author.bot:
-        trigger_values = await get_language_return_type(message)
+        trigger_values = get_language_return_type(message)
 
         if trigger_values is not None:
-            location = await morning_in()
+            location = morning_in()
 
-            return await get_response(message, trigger_values, location)
+            return get_response(message, trigger_values, location)
     return None
