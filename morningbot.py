@@ -96,43 +96,17 @@ async def activity_loop():
         await asyncio.sleep(4)
         i += 1
 
-
-async def morning_in():
-    """
-    Prints a random location of a list where it is currently 8am in their timezone
-    """
-    random_location = random.randint(0, 2)
-
-    random_morning = 7 + random.randint(0, 2)
-
-    # Gets the current time and sets minutes, seconds and microseconds to 0
-    now = datetime.now()
-    now = now.replace(minute=0, second=0, microsecond=0)
-    morning = now.replace(hour=random_morning)
-
-    print(now, ' | ', morning)
-
-    timezone = utils.calculate_timezone(now, morning)
-
-    location = utils.get_location(timezone, random_location)
-
-    return location
-
-
 @bot.event
 async def on_message(message):
-    if not message.author.bot and any(map(message.content.lower().__contains__, morningTriggers)):
+    """
+    Respond to the given message with a corresponding morning greet
+    """
+    response = await utils.get_morning_response(message)
 
-        location = await morning_in()
-        trigger = utils.get_language_return_type(message, morningTriggers)
-
+    if response is not None:
         ctx = await bot.get_context(message)
 
-        # Checks if morning is backwards so returns backwards version of message
-        if trigger == "gninrom":
-            await ctx.send(location[::-1] + " " + morningTriggers[trigger] + " " + message.author.mention)
-        else:
-            await ctx.send(message.author.mention + " " + morningTriggers[trigger] + " " + location)
+        await ctx.send(response)
 
     await bot.process_commands(message)
 
