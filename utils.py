@@ -8,8 +8,8 @@ import json
 import random
 
 class TriggerStatus(enum.Enum):
-    Regular = 0
-    Reverse = 1
+    REGULAR = 0
+    REVERSE = 1
 
 # Define list of morning response triggering substrings
 morningTriggers = {
@@ -153,9 +153,9 @@ def get_language_return_type(message):
     """
     for trigger in morningTriggers:
         if message.content.lower().__contains__(trigger):
-            return (TriggerStatus.Regular, trigger)
+            return (TriggerStatus.REGULAR, trigger)
         if message.content.lower().__contains__(trigger[::-1]):
-            return (TriggerStatus.Reverse, trigger)
+            return (TriggerStatus.REVERSE, trigger)
     return None
 
 def get_response(message, trigger_values, location):
@@ -168,7 +168,7 @@ def get_response(message, trigger_values, location):
         trigger_status = trigger_values[0]
         trigger = trigger_values[1]
         if location is not None:
-            if trigger_status == TriggerStatus.Reverse:
+            if trigger_status == TriggerStatus.REVERSE:
                 return morningTriggers[trigger].format(
                     user="@{}".format(message.author.name),
                     place=location
