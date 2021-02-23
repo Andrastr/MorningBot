@@ -3,8 +3,13 @@ Module for core functionality of morningbot
 """
 from datetime import timedelta
 from datetime import datetime
+import enum
 import json
 import random
+
+class TriggerStatus(enum.Enum):
+    Regular = 0
+    Reverse = 1
 
 # Define list of morning response triggering substrings
 morningTriggers = {
@@ -148,9 +153,9 @@ def get_language_return_type(message):
     """
     for trigger in morningTriggers:
         if message.content.lower().__contains__(trigger):
-            return (0, trigger)
+            return (TriggerStatus.Regular, trigger)
         if message.content.lower().__contains__(trigger[::-1]):
-            return (1, trigger)
+            return (TriggerStatus.Reverse, trigger)
     return None
 
 def get_response(message, trigger_values, location):
@@ -163,7 +168,7 @@ def get_response(message, trigger_values, location):
         trigger_status = trigger_values[0]
         trigger = trigger_values[1]
         if location is not None:
-            if trigger_status == 1:
+            if trigger_status == TriggerStatus.Reverse:
                 return morningTriggers[trigger].format(
                     user="@{}".format(message.author.name),
                     place=location
