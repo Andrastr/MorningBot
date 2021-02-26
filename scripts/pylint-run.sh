@@ -1,0 +1,1 @@
+pylint `find $PWD -iname "*.py"`
