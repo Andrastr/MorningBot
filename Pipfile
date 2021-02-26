@@ -4,6 +4,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+pylint = "*"
+coverage = "*"
 
 [packages]
 discord = "*"
@@ -15,3 +18,9 @@ pytz = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+tests = "pytest"
+lint = "bash ./scripts/pylint-run.sh"
+tests-cov = "coverage run -m pytest"
+cov-report = "coverage report -m"

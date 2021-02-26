@@ -4,3 +4,4 @@ __pycache__/
 discord.log
 .vscode/
 .coverage
+*.code-workspace

@@ -8,28 +8,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.9
+    - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
-        python-version: 3.9
+        python-version: 3.7
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
-        pip install discord
-        pip install python-dotenv
-        pip install PyNaCl
-        pip install asyncio
-        pip install pytz
-        pip install pytest
-        pip install coverage
+        pip install pipenv
+    - name: Install pipenv dependencies
+      run: |
+        pipenv install --dev
     - name: Analysing the code with pylint
       run: |
         # Stop run if there are linting errors
-        pylint `find . \( -iname '*.py' \)`
+        pipenv run lint
     - name: Test with pytest with coverage
       run: |
-        coverage run -m pytest
-    - name: Publish coverage to html
+        pipenv run tests-cov
+    - name: Generate coverage report
       run: |
-        coverage report -m 
+        pipenv run cov-report
