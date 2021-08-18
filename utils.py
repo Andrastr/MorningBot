@@ -19,7 +19,7 @@ class TriggerStatus(enum.Enum):
 
 
 # Define list of morning response triggering substrings
-morningTriggers = {
+MORNING_TRIGGERS = {
     "morn": "{user} Good morning from {place}",
     # Brythonic
     "bore": "{user} Bore da o {place}",
@@ -134,7 +134,7 @@ def get_language_return_type(message) -> Optional[tuple[TriggerStatus, Union[str
     Returns:
         string: trigger
     """
-    for trigger in morningTriggers:
+    for trigger in MORNING_TRIGGERS:
         if message.content.lower().__contains__(trigger):
             return TriggerStatus.REGULAR, trigger
         if message.content.lower().__contains__(trigger[::-1]):
@@ -153,11 +153,11 @@ def get_response(message, trigger_values, location: int) -> Optional[str]:
         trigger = trigger_values[1]
         if location is not None:
             if trigger_status == TriggerStatus.REVERSE:
-                return morningTriggers[trigger].format(
+                return MORNING_TRIGGERS[trigger].format(
                     user="@{}".format(message.author.name),
                     place=location
                 )[::-1]
-            return morningTriggers[trigger].format(
+            return MORNING_TRIGGERS[trigger].format(
                 user=message.author.mention, place=location
             )
     return None
