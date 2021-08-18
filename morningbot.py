@@ -24,7 +24,6 @@ logger.addHandler(handler)
 
 # load the private discord token from .env file.
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
 
 # Initialise the Bot object with an accessible help Command object
 helpCommand = DefaultHelpCommand()
@@ -86,7 +85,6 @@ async def on_command_error(ctx, error):
 
 def main():
     # Start the bot
-    bot.run(TOKEN)
     bot.run(os.getenv('DISCORD_TOKEN'))
 
 
