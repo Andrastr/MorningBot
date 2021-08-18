@@ -54,26 +54,6 @@ async def on_ready():
     )
 
 
-async def activity_loop():
-    """
-    Cycles through different bot activities
-    """
-    await bot.wait_until_ready()
-    i = 0
-    while not bot.is_closed():
-        if i > 1:
-            i = 0
-        status = ['the kitchen', 'the bathroom']
-        await bot.change_presence(
-            activity=discord.Activity(
-                type=discord.ActivityType.watching,
-                name=status[i]
-            )
-        )
-        await asyncio.sleep(4)
-        i += 1
-
-
 @bot.event
 async def on_message(message):
     """
@@ -107,6 +87,7 @@ async def on_command_error(ctx, error):
 def main():
     # Start the bot
     bot.run(TOKEN)
+    bot.run(os.getenv('DISCORD_TOKEN'))
 
 
 if __name__ == '__main__':
