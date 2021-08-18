@@ -1,11 +1,12 @@
 """
 Module for core functionality of morningbot
 """
-from datetime import timedelta
-from datetime import datetime
 import enum
 import json
 import random
+from datetime import datetime
+from datetime import timedelta
+
 
 class TriggerStatus(enum.Enum):
     """
@@ -14,6 +15,7 @@ class TriggerStatus(enum.Enum):
     """
     REGULAR = 0
     REVERSE = 1
+
 
 # Define list of morning response triggering substrings
 morningTriggers = {
@@ -162,6 +164,7 @@ def get_language_return_type(message):
             return (TriggerStatus.REVERSE, trigger)
     return None
 
+
 def get_response(message, trigger_values, location):
     """
     Generates an appropriate response to the message
@@ -176,11 +179,12 @@ def get_response(message, trigger_values, location):
                 return morningTriggers[trigger].format(
                     user="@{}".format(message.author.name),
                     place=location
-                    )[::-1]
+                )[::-1]
             return morningTriggers[trigger].format(
                 user=message.author.mention, place=location
-                )
+            )
     return None
+
 
 def get_morning_response(message):
     """

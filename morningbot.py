@@ -2,17 +2,14 @@
     module for a discord bot that responds to morning greetings
 """
 import asyncio
-import os
-
-import logging
-
 import discord
+import logging
+import os
 from discord.ext import commands
 from discord.ext.commands import DefaultHelpCommand
-
 from dotenv import load_dotenv
-import utils
 
+import utils
 # logs data to the discord.log file,
 #  if this file doesn't exist at runtime
 #  it is created automatically
@@ -21,12 +18,9 @@ from cogs.utilities import Utilities
 logger = logging.getLogger('discord')
 # logging levels: NOTSET (all), DEBUG (bot interactions), INFO (bot connected etc)
 logger.setLevel(logging.INFO)
-handler = logging.FileHandler(
-    filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter(
-    '%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
-
 
 # load the private discord token from .env file.
 load_dotenv()
@@ -53,9 +47,11 @@ async def on_ready():
     """
     print(f'{bot.user.name} has connected to Discord!')
     await bot.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching,
-        name="the sunrise")
+        activity=discord.Activity(
+            type=discord.ActivityType.watching,
+            name="the sunrise"
         )
+    )
 
 
 async def activity_loop():
@@ -69,9 +65,11 @@ async def activity_loop():
             i = 0
         status = ['the kitchen', 'the bathroom']
         await bot.change_presence(
-            activity=discord.Activity(type=discord.ActivityType.watching,
-            name=status[i])
+            activity=discord.Activity(
+                type=discord.ActivityType.watching,
+                name=status[i]
             )
+        )
         await asyncio.sleep(4)
         i += 1
 

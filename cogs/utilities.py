@@ -6,10 +6,12 @@ import time
 from discord.ext import commands
 from discord.ext.commands import Context
 
+
 class Utilities(commands.Cog):
     """
     General Utilities
     """
+
     @commands.command()
     async def ping(self, ctx: Context):
         """
@@ -20,15 +22,15 @@ class Utilities(commands.Cog):
             'pong. `DWSP latency: ' +
             str(round(ctx.bot.latency * 1000)) +
             'ms`'
-            )
+        )
         end_time = time.time()
         await message.edit(
             content='pong. `DWSP latency: ' +
-            str(round(ctx.bot.latency * 1000)) +
-            'ms` ' +
-                                   '`Response time: ' +
-                                   str(int((end_time - start_time) * 1000)) +
-                                   'ms`')
+                    str(round(ctx.bot.latency * 1000)) +
+                    'ms` ' +
+                    '`Response time: ' +
+                    str(int((end_time - start_time) * 1000)) +
+                    'ms`')
 
     @commands.command()
     async def source(self, ctx: Context):
@@ -37,9 +39,9 @@ class Utilities(commands.Cog):
         """
         await ctx.send(
             content='Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`\n'
-                               'Thanks to the contributors:\n'
-                               '`Philip`, `Matt`, `Michael`, `Prv`, `Jazzyboy1`\n'
-                               'https://github.com/Andrastr/MorningBot')
+                    'Thanks to the contributors:\n'
+                    '`Philip`, `Matt`, `Michael`, `Prv`, `Jazzyboy1`\n'
+                    'https://github.com/Andrastr/MorningBot')
 
     @commands.command()
     async def feedback(self, ctx: Context):
@@ -49,4 +51,4 @@ class Utilities(commands.Cog):
         await ctx.send(
             'If the bot is broken or you have any feedback '
             'you\'d like to submit please create a issue on:'
-                       'GitHub: https://github.com/Andrastr/MorningBot')
+            'GitHub: https://github.com/Andrastr/MorningBot')
