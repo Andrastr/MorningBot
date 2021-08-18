@@ -38,10 +38,20 @@ class Utilities(commands.Cog):
         Print a link to the source code
         """
         await ctx.send(
-            content='Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`\n'
-                    'Thanks to the contributors:\n'
-                    '`Philip`, `Matt`, `Michael`, `Prv`, `Jazzyboy1`\n'
-                    'https://github.com/Andrastr/MorningBot')
+            content="""
+Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`
+            
+Thanks to the contributors:
+° `Jazzyboy`
+° `Michael`
+° `Philip`
+° `Prv`
+° `Rose`
+° `Sam`
+            
+https://github.com/Andrastr/MorningBot
+            """
+        )
 
     @commands.command()
     async def feedback(self, ctx: Context) -> None:
@@ -49,6 +59,8 @@ class Utilities(commands.Cog):
         Report feedback or issues with the bot
         """
         await ctx.send(
-            'If the bot is broken or you have any feedback '
-            'you\'d like to submit please create a issue on:'
-            'GitHub: https://github.com/Andrastr/MorningBot')
+            content="""
+If the bot is broken or you have any feedback you'd like to submit then please create an issue on:
+GitHub: https://github.com/Andrastr/MorningBot
+            """
+        )
