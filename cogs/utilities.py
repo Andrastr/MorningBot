@@ -41,7 +41,9 @@ class Utilities(commands.Cog):
             content="""
 Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`
             
-Thanks to the contributors:
+Thanks to the contributors (in alphabetical order):
+° `Idris`
+° `James`
 ° `Jazzyboy`
 ° `Michael`
 ° `Philip`
