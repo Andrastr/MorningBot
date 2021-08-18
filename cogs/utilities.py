@@ -42,14 +42,16 @@ class Utilities(commands.Cog):
 Created by `Andreas` and `Joel`, brought to you by `Joel Adams & co`
             
 Thanks to the contributors (in alphabetical order):
-° `Idris` // https://github.com/IdrisTheDragon
-° `James` // https://github.com/Jacherr
-° `Jazzyboy` // https://github.com/JazzyBoy1
-° `Michael` // https://github.com/itsmichaelwest
-° `Philip` // https://github.com/PhilipMottershead
-° `Prv` // https://github.com/PrebenVangberg
-° `Rose` // https://github.com/RosesHaveThorns
-° `Sam` // https://github.com/Amheus
+```
+Idris   -   https://github.com/IdrisTheDragon
+James   -   https://github.com/Jacherr
+Jaz     -   https://github.com/JazzyBoy1
+Michael -   https://github.com/itsmichaelwest
+Philip  -   https://github.com/PhilipMottershead
+Preben  -   https://github.com/PrebenVangberg
+Rose    -   https://github.com/RosesHaveThorns
+Sam     -   https://github.com/Amheus
+```
             
 https://github.com/Andrastr/MorningBot
             """
