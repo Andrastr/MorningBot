@@ -13,7 +13,7 @@ class Utilities(commands.Cog):
     """
 
     @commands.command()
-    async def ping(self, ctx: Context):
+    async def ping(self, ctx: Context) -> None:
         """
         Status check
         """
@@ -33,7 +33,7 @@ class Utilities(commands.Cog):
                     'ms`')
 
     @commands.command()
-    async def source(self, ctx: Context):
+    async def source(self, ctx: Context) -> None:
         """
         Print a link to the source code
         """
@@ -44,7 +44,7 @@ class Utilities(commands.Cog):
                     'https://github.com/Andrastr/MorningBot')
 
     @commands.command()
-    async def feedback(self, ctx: Context):
+    async def feedback(self, ctx: Context) -> None:
         """
         Report feedback or issues with the bot
         """

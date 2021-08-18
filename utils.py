@@ -6,6 +6,7 @@ import json
 import random
 from datetime import datetime
 from datetime import timedelta
+from typing import Optional, Union
 
 
 class TriggerStatus(enum.Enum):
@@ -54,7 +55,7 @@ with open('place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)
 
 
-def calculate_timezone(now, target):
+def calculate_timezone(now: datetime, target: datetime) -> int:
     """
     Calculates the calculates the timezone offset between the current time and the target time
 
@@ -88,7 +89,7 @@ def calculate_timezone(now, target):
     return timezone
 
 
-def get_location(timezone, index):
+def get_location(timezone: int, index: int):
     """
     Gets the location string for the timezone
 
@@ -105,7 +106,7 @@ def get_location(timezone, index):
     return None
 
 
-def morning_in():
+def morning_in() -> int:
     """
     Prints a random location of a list where it is currently 8am in their timezone
     """
@@ -127,7 +128,7 @@ def morning_in():
     return location
 
 
-def get_language_return_type(message):
+def get_language_return_type(message) -> Optional[tuple[TriggerStatus, Union[str, str]]]:
     """
     Retrieves the language to respond to the message
     Returns:
@@ -135,13 +136,13 @@ def get_language_return_type(message):
     """
     for trigger in morningTriggers:
         if message.content.lower().__contains__(trigger):
-            return (TriggerStatus.REGULAR, trigger)
+            return TriggerStatus.REGULAR, trigger
         if message.content.lower().__contains__(trigger[::-1]):
-            return (TriggerStatus.REVERSE, trigger)
+            return TriggerStatus.REVERSE, trigger
     return None
 
 
-def get_response(message, trigger_values, location):
+def get_response(message, trigger_values, location: int) -> Optional[str]:
     """
     Generates an appropriate response to the message
     Returns:
@@ -162,7 +163,7 @@ def get_response(message, trigger_values, location):
     return None
 
 
-def get_morning_response(message):
+def get_morning_response(message) -> Optional[str]:
     """
     Generates an appropriate response to the message
     Returns:

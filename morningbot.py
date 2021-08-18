@@ -40,7 +40,7 @@ helpCommand.cog = generalCog
 
 
 @bot.event
-async def on_ready():
+async def on_ready() -> None:
     """
     Do something when the bot is ready to use.
     """
@@ -54,7 +54,7 @@ async def on_ready():
 
 
 @bot.event
-async def on_message(message):
+async def on_message(message) -> None:
     """
     Respond to the message with a corresponding morning greet
     """
@@ -64,7 +64,7 @@ async def on_message(message):
 
 
 @bot.event
-async def on_command_error(ctx, error):
+async def on_command_error(ctx, error) -> None:
     """
     Handle the Error message in a nice way.
     """
@@ -77,7 +77,7 @@ async def on_command_error(ctx, error):
         logging.error(error)
 
 
-def main(): bot.run(os.getenv('DISCORD_TOKEN'))
+def main() -> None: bot.run(os.getenv('DISCORD_TOKEN'))
 
 
 if __name__ == '__main__':
