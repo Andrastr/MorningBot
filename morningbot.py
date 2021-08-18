@@ -104,5 +104,10 @@ async def on_command_error(ctx, error):
         logging.error(error)
 
 
-# Start the bot
-bot.run(TOKEN)
+def main():
+    # Start the bot
+    bot.run(TOKEN)
+
+
+if __name__ == '__main__':
+    main()
