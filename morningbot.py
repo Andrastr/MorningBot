@@ -59,10 +59,7 @@ async def on_message(message):
     Respond to the message with a corresponding morning greet
     """
     response = utils.get_morning_response(message)
-    if response is not None:
-        ctx = await bot.get_context(message)
-
-        await ctx.send(response)
+    if response is not None: await message.channel.send(response)
 
     await bot.process_commands(message)
 
@@ -76,16 +73,12 @@ async def on_command_error(ctx, error):
         await ctx.send(error)
     elif isinstance(error, commands.errors.MissingRequiredArgument):
         await ctx.send('You are missing a required argument.')
-    elif isinstance(error, commands.errors.CommandNotFound):
-        pass
     else:
         await ctx.send('You are missing a required argument.')
         logging.error(error)
 
 
-def main():
-    # Start the bot
-    bot.run(os.getenv('DISCORD_TOKEN'))
+def main(): bot.run(os.getenv('DISCORD_TOKEN'))
 
 
 if __name__ == '__main__':
