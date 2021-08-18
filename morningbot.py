@@ -60,7 +60,6 @@ async def on_message(message):
     """
     response = utils.get_morning_response(message)
     if response is not None: await message.channel.send(response)
-
     await bot.process_commands(message)
 
 

@@ -50,32 +50,8 @@ morningTriggers = {
 }
 
 
-def read_json_file(filename):
-    """
-    Reads Json file
-
-    Parameters:
-        filename (string) : filename of json file to be read
-
-    Returns:
-        list timezones and nested list of location strings
-    """
-    with open(filename, "r", encoding='UTF-8') as read_file:
-        data = json.load(read_file)
-        return data
-
-
-places = read_json_file("place.json")
-
-
-def get_places():
-    """
-    Gets the places list
-
-    Returns:
-        list timezones and nested list of location strings
-    """
-    return places
+with open('place.json', "r", encoding='UTF-8') as read_file:
+    places = json.load(read_file)
 
 
 def calculate_timezone(now, target):
@@ -192,11 +168,9 @@ def get_morning_response(message):
     Returns:
         string: response
     """
-    if not message.author.bot:
-        trigger_values = get_language_return_type(message)
+    if message.author.bot: return None
 
-        if trigger_values is not None:
-            location = morning_in()
+    trigger_values = get_language_return_type(message)
+    if trigger_values is not None: return get_response(message, trigger_values, morning_in())
 
-            return get_response(message, trigger_values, location)
     return None
