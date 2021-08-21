@@ -59,7 +59,8 @@ async def on_message(message) -> None:
     Respond to the message with a corresponding morning greet
     """
     response = utils.get_morning_response(message)
-    if response is not None: await message.channel.send(response)
+    if response is not None:
+        await message.channel.send(response)
     await bot.process_commands(message)
 
 
@@ -77,7 +78,11 @@ async def on_command_error(ctx, error) -> None:
         logging.error(error)
 
 
-def main() -> None: bot.run(os.getenv('DISCORD_TOKEN'))
+def main() -> None:
+    """
+    Starts the bot.
+    """
+    bot.run(os.getenv('DISCORD_TOKEN'))
 
 
 if __name__ == '__main__':

@@ -169,9 +169,11 @@ def get_morning_response(message) -> Optional[str]:
     Returns:
         string: response
     """
-    if message.author.bot: return None
+    if message.author.bot:
+        return None
 
     trigger_values = get_language_return_type(message)
-    if trigger_values is not None: return get_response(message, trigger_values, morning_in())
+    if trigger_values is not None:
+        return get_response(message, trigger_values, morning_in())
 
     return None
