@@ -1,11 +1,12 @@
 """
 Module for core functionality of morningbot
 """
-from enum import Enum
 import json
+import os
 import random
 from datetime import datetime
 from datetime import timedelta
+from enum import Enum
 from typing import Optional, Union
 
 
@@ -50,8 +51,7 @@ MORNING_TRIGGERS = {
     "ahayo": "{user} Subax wanaagsan {place}"
 }
 
-
-with open('place.json', "r", encoding='UTF-8') as read_file:
+with open(os.getcwd() + '\\place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)
 
 
@@ -169,9 +169,11 @@ def get_morning_response(message) -> Optional[str]:
     Returns:
         string: response
     """
-    if message.author.bot: return None
+    if message.author.bot:
+        return None
 
     trigger_values = get_language_return_type(message)
-    if trigger_values is not None: return get_response(message, trigger_values, morning_in())
+    if trigger_values is not None:
+        return get_response(message, trigger_values, morning_in())
 
     return None
