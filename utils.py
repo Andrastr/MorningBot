@@ -1,12 +1,12 @@
 """
 Module for core functionality of morningbot
 """
-from enum import Enum
 import json
 import os
 import random
 from datetime import datetime
 from datetime import timedelta
+from enum import Enum
 from typing import Optional, Union
 
 
@@ -50,7 +50,6 @@ MORNING_TRIGGERS = {
     "sawubona": "{user} Sawubona kusuka {place}",
     "ahayo": "{user} Subax wanaagsan {place}"
 }
-
 
 with open(os.getcwd() + '\\place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)

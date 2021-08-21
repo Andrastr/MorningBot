@@ -1,10 +1,10 @@
 """
     module for a discord bot that responds to morning greetings
 """
-import asyncio
-import discord
 import logging
 import os
+
+import discord
 from discord.ext import commands
 from discord.ext.commands import DefaultHelpCommand
 from dotenv import load_dotenv
