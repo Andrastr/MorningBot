@@ -3,6 +3,7 @@ Module for core functionality of morningbot
 """
 import enum
 import json
+import os
 import random
 from datetime import datetime
 from datetime import timedelta
@@ -51,7 +52,7 @@ MORNING_TRIGGERS = {
 }
 
 
-with open('place.json', "r", encoding='UTF-8') as read_file:
+with open(os.getcwd() + '\\place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)
 
 
