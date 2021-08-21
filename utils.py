@@ -1,11 +1,13 @@
 """
 Module for core functionality of morningbot
 """
-from datetime import timedelta
-from datetime import datetime
 import enum
 import json
 import random
+from datetime import datetime
+from datetime import timedelta
+from typing import Optional, Union
+
 
 class TriggerStatus(enum.Enum):
     """
@@ -15,8 +17,9 @@ class TriggerStatus(enum.Enum):
     REGULAR = 0
     REVERSE = 1
 
+
 # Define list of morning response triggering substrings
-morningTriggers = {
+MORNING_TRIGGERS = {
     "morn": "{user} Good morning from {place}",
     # Brythonic
     "bore": "{user} Bore da o {place}",
@@ -48,35 +51,11 @@ morningTriggers = {
 }
 
 
-def read_json_file(filename):
-    """
-    Reads Json file
-
-    Parameters:
-        filename (string) : filename of json file to be read
-
-    Returns:
-        list timezones and nested list of location strings
-    """
-    with open(filename, "r", encoding='UTF-8') as read_file:
-        data = json.load(read_file)
-        return data
+with open('place.json', "r", encoding='UTF-8') as read_file:
+    places = json.load(read_file)
 
 
-places = read_json_file("place.json")
-
-
-def get_places():
-    """
-    Gets the places list
-
-    Returns:
-        list timezones and nested list of location strings
-    """
-    return places
-
-
-def calculate_timezone(now, target):
+def calculate_timezone(now: datetime, target: datetime) -> int:
     """
     Calculates the calculates the timezone offset between the current time and the target time
 
@@ -110,7 +89,7 @@ def calculate_timezone(now, target):
     return timezone
 
 
-def get_location(timezone, index):
+def get_location(timezone: int, index: int):
     """
     Gets the location string for the timezone
 
@@ -127,7 +106,7 @@ def get_location(timezone, index):
     return None
 
 
-def morning_in():
+def morning_in() -> int:
     """
     Prints a random location of a list where it is currently 8am in their timezone
     """
@@ -149,20 +128,21 @@ def morning_in():
     return location
 
 
-def get_language_return_type(message):
+def get_language_return_type(message) -> Optional[tuple[TriggerStatus, Union[str, str]]]:
     """
     Retrieves the language to respond to the message
     Returns:
         string: trigger
     """
-    for trigger in morningTriggers:
+    for trigger in MORNING_TRIGGERS:
         if message.content.lower().__contains__(trigger):
-            return (TriggerStatus.REGULAR, trigger)
+            return TriggerStatus.REGULAR, trigger
         if message.content.lower().__contains__(trigger[::-1]):
-            return (TriggerStatus.REVERSE, trigger)
+            return TriggerStatus.REVERSE, trigger
     return None
 
-def get_response(message, trigger_values, location):
+
+def get_response(message, trigger_values, location: int) -> Optional[str]:
     """
     Generates an appropriate response to the message
     Returns:
@@ -173,26 +153,25 @@ def get_response(message, trigger_values, location):
         trigger = trigger_values[1]
         if location is not None:
             if trigger_status == TriggerStatus.REVERSE:
-                return morningTriggers[trigger].format(
+                return MORNING_TRIGGERS[trigger].format(
                     user="@{}".format(message.author.name),
                     place=location
-                    )[::-1]
-            return morningTriggers[trigger].format(
+                )[::-1]
+            return MORNING_TRIGGERS[trigger].format(
                 user=message.author.mention, place=location
-                )
+            )
     return None
 
-def get_morning_response(message):
+
+def get_morning_response(message) -> Optional[str]:
     """
     Generates an appropriate response to the message
     Returns:
         string: response
     """
-    if not message.author.bot:
-        trigger_values = get_language_return_type(message)
+    if message.author.bot: return None
 
-        if trigger_values is not None:
-            location = morning_in()
+    trigger_values = get_language_return_type(message)
+    if trigger_values is not None: return get_response(message, trigger_values, morning_in())
 
-            return get_response(message, trigger_values, location)
     return None
