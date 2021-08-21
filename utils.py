@@ -8,6 +8,7 @@ from datetime import datetime
 from datetime import timedelta
 from enum import Enum
 from typing import Optional, Union
+import platform
 
 
 class TriggerStatus(Enum):
@@ -51,7 +52,12 @@ MORNING_TRIGGERS = {
     "ahayo": "{user} Subax wanaagsan {place}"
 }
 
-with open(os.getcwd() + '\\place.json', "r", encoding='UTF-8') as read_file:
+if platform.system() is "Windows":
+    file_path = '\\'
+else:
+    file_path = '/'
+
+with open(f'{os.getcwd()}{file_path}place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)
 
 
