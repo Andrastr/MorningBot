@@ -52,12 +52,12 @@ MORNING_TRIGGERS = {
     "ahayo": "{user} Subax wanaagsan {place}"
 }
 
-if platform.system() is "Windows":
-    file_path = '\\'
+if platform.system() == "Windows":
+    FILE_PATH = '\\'
 else:
-    file_path = '/'
+    FILE_PATH = '/'
 
-with open(f'{os.getcwd()}{file_path}place.json', "r", encoding='UTF-8') as read_file:
+with open(f'{os.getcwd()}{FILE_PATH}place.json', "r", encoding='UTF-8') as read_file:
     places = json.load(read_file)
 
 
