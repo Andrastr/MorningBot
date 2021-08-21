@@ -1,7 +1,7 @@
 """
 Module for core functionality of morningbot
 """
-import enum
+from enum import Enum
 import json
 import random
 from datetime import datetime
@@ -9,7 +9,7 @@ from datetime import timedelta
 from typing import Optional, Union
 
 
-class TriggerStatus(enum.Enum):
+class TriggerStatus(Enum):
     """
     Represents status of a trigger, i.e. a morning greet.
     Can be either regular success or a reverse greet.
@@ -128,7 +128,7 @@ def morning_in() -> int:
     return location
 
 
-def get_language_return_type(message) -> Optional[tuple[TriggerStatus, Union[str, str]]]:
+def get_language_return_type(message) -> Optional[Union[Enum, dict]]:
     """
     Retrieves the language to respond to the message
     Returns:
